@@ -357,29 +357,29 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form action="process_form.php" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name"> 
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email"> 
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Subject"> 
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Your Message"></textarea> 
-                        </div>
-                    
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                    <form action="https://formspree.io/f/xnnjerbl" method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+    </div>
+
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
                 </div>
             </div>
         </section>
