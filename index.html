@@ -85,21 +85,21 @@
                     <div class="about-image-container">
                         <div class="code-overlay">
                             <pre class="code-content">
-            #Code snippet developed for parsing html 
-            for idx, batch in enumerate(batches):
-            batch_number = idx + 1
-            batch_rows = "\n".join(batch)
-            soup = BeautifulSoup(template_html, "html.parser")                
-            table = soup.find("table", {"id": "tablaProductosLog"})
-            if table:
-                tbody = table.find("tbody")
-                if tbody:                
-                    tbody.clear()
-                    new_tbody = BeautifulSoup(batch_rows, "html.parser")
-                    tbody.append(new_tbody)
-            output_file = f"template_batch{batch_number}.html"
-            with open(output_file, "w") as file:
-                file.write(str(soup))
+            def HelloWorld():
+		# A fun function to brighten your day!
+    	if having == "bad_day":
+        	return "Here's a cute dog video to cheer you up: "
+    	elif having == "ok_day":
+        	return "How about a cute cat video to make it better? "
+		elif having == "great_day":
+		    return "You're already winning! Keep it up! "
+		else:
+		   return "Sending you my warmest regards! "
+		having = input("How's your day? (bad_day / ok_day / great_day / other): ")
+		message = HelloWorld()
+		print(message)
+		sincerely = "Stay awesome, and remember: You're doing great! "
+		print(sincerely)
                         
                             </pre>
                         </div>
