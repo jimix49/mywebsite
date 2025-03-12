@@ -420,19 +420,12 @@
   // Add class to HTML to enable smooth scrolling
   document.documentElement.classList.add('smooth-scroll');
   
-  // Select all sections and elements to animate
+  // Select only sections to animate (not individual content items)
   const sections = document.querySelectorAll('section, .hero, footer');
-  const animateItems = document.querySelectorAll('.card, .skill-item, .tech-item, .contact-item');
   
-  // Add fade-in class to all elements
+  // Add fade-in class to all sections
   sections.forEach(section => {
     section.classList.add('fade-in');
-  });
-  
-  animateItems.forEach((item, index) => {
-    item.classList.add('fade-in');
-    // Add staggered delay for child elements
-    item.style.transitionDelay = `${index * 0.1}s`;
   });
   
   // Create an Intersection Observer for sections
@@ -450,41 +443,9 @@
     rootMargin: '0px 0px -100px 0px'
   });
   
-  // Create an Intersection Observer for items
-  const itemObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const parent = entry.target.closest('section');
-        
-        if (parent && parent.classList.contains('visible')) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, 200);
-        } else {
-          // If parent section is not yet visible, delay animation
-          const checkParent = setInterval(() => {
-            if (parent && parent.classList.contains('visible')) {
-              entry.target.classList.add('visible');
-              clearInterval(checkParent);
-            }
-          }, 100);
-        }
-        
-        itemObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-  
-  // Start observing elements
+  // Start observing sections
   sections.forEach(section => {
     sectionObserver.observe(section);
-  });
-  
-  animateItems.forEach(item => {
-    itemObserver.observe(item);
   });
   
   // Add no-js class to body if JavaScript is disabled
