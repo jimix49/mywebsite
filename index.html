@@ -415,5 +415,86 @@
             </div>
         </div>
     </footer>
+	<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all sections
+    const sections = document.querySelectorAll('section, .hero, footer');
+    
+    // Initial state - hide all sections
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // When section is visible
+        if (entry.isIntersecting) {
+          // Add animation class
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, 100);
+          
+          // Stop observing after animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15, // Trigger when 15% of the element is visible
+      rootMargin: '0px 0px -100px 0px' // Adjust the trigger point
+    });
+    
+    // Start observing each section
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Additional animations for cards, skill items, etc.
+    const animateItems = document.querySelectorAll('.card, .skill-item, .tech-item, .contact-item');
+    
+    animateItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      item.style.transitionDelay = `${index * 0.1}s`;
+    });
+    
+    const itemsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const parent = entry.target.closest('section');
+          
+          if (parent && parent.style.opacity === '1') {
+            setTimeout(() => {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }, 200);
+          } else {
+            // If parent section is not yet visible, delay animation
+            const checkParent = setInterval(() => {
+              if (parent && parent.style.opacity === '1') {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                clearInterval(checkParent);
+              }
+            }, 100);
+          }
+          
+          itemsObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animateItems.forEach(item => {
+      itemsObserver.observe(item);
+    });
+  });
+</script>
 </body>
 </html>
