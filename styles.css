@@ -480,9 +480,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
-/* Add these styles to your existing CSS file */
 
-/* Base animation styles */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -494,7 +492,7 @@ footer {
   transform: translateY(0);
 }
 
-/* Prevent flash of unstyled content before JS loads */
+
 .no-js section, 
 .no-js .hero, 
 .no-js .card, 
@@ -505,17 +503,15 @@ footer {
   transform: translateY(0);
 }
 
-/* Ensure smooth transitions */
+
 html.smooth-scroll {
   scroll-behavior: smooth;
 }
 
-/* Optional: animation for navbar */
 nav {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Optional: animation for hover states */
 .btn, .card, .skill-item, .social-link {
   transition: all 0.3s ease;
 }
